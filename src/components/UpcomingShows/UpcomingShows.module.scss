@@ -1,5 +1,15 @@
 .Upcomingshows {
   width: 100%;
-  height: 80vh;
-  background-color: #33ccff;
+  height: auto;
+  // background-color: #33ccff;
+  padding: 50px;
+
+  .wrapper {
+    width: 100%;
+    height: auto;
+    display: grid;
+    margin-top: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
 }
