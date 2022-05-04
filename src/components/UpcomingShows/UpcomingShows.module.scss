@@ -1,8 +1,13 @@
+@import "../../styles/mixins";
 .Upcomingshows {
   width: 100%;
   height: auto;
   // background-color: #33ccff;
   padding: 50px;
+  @include respond(phone) {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 20px;
+  }
 
   .wrapper {
     width: 100%;
@@ -11,5 +16,12 @@
     margin-top: 1rem;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+
+    @include respond(tab) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include respond(phone) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }

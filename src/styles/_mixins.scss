@@ -1,0 +1,84 @@
+@use "sass:math";
+
+// MOBILE FIRST MEDIA QUERY
+@mixin respond($breakpoint) {
+  @if $breakpoint==mini-phone {
+    @media only screen and (max-width: 21.875em) {
+      @content;
+    }
+
+    // < 350px
+  }
+
+  @if $breakpoint==smallest-phone {
+    @media only screen and (max-width: 23.4375em) {
+      @content;
+    }
+
+    // < 375px
+  }
+
+  @if $breakpoint==smaller-phone {
+    @media only screen and (max-width: 26.5625em) {
+      @content;
+    }
+
+    // < 425px
+  }
+
+  @if $breakpoint==small-phone {
+    @media only screen and (max-width: 31.25em) {
+      @content;
+    }
+
+    // < 500px
+  }
+
+  @if $breakpoint==phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+
+    // < 600px
+  }
+
+  @if $breakpoint==tab {
+    @media only screen and (max-width: 48em) {
+      @content;
+    }
+
+    // < 768px
+  }
+
+  @if $breakpoint==big-tab {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+
+    // < 900px
+  }
+
+  @if $breakpoint==biggest-tab {
+    @media only screen and (max-width: 1024px) {
+      @content;
+    }
+
+    // < 900px
+  }
+
+  @if $breakpoint==mini-laptop {
+    @media only screen and (max-width: 78.75em) {
+      @content;
+    }
+
+    // < 1060px
+  }
+
+  @if $breakpoint==max-laptop {
+    @media only screen and (max-width: 95em) {
+      @content;
+    }
+
+    // < 1430px
+  }
+}
