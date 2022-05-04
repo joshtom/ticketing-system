@@ -27,6 +27,7 @@ function Upcomingshows() {
         key={data?.showId}
         loading={loading}
         title={data?.title}
+        showId={data.showId}
       />
     ));
   };
