@@ -3,11 +3,13 @@ import Header from "../../components/Header/Header";
 import { useParams, useNavigate } from "react-router-dom";
 import Styles from "./Show.module.scss";
 import { upcomingShowsData, UpcomingShows } from "../../utils/data";
+import { Truncate } from "../../helpers";
+import Button from "../../components/Button/Button";
 
 function Show() {
   let { id } = useParams();
   const navigate = useNavigate();
-  const [show, setShow] = useState<UpcomingShows | null>({
+  const [show, setShow] = useState<UpcomingShows>({
     imageUrl: "",
     showId: 0,
     showNo: "",
@@ -45,7 +47,76 @@ function Show() {
           <span onClick={() => navigate("/")}>Go Back</span>
         </header>
       )}
-      {/* <main className={Styles.main}>{`${show}`}</main> */}
+      <main className={Styles.main}>
+        <section className={Styles["showTicket"]}>
+          <h3>Choose Your Tickets</h3>
+          <div className={Styles["showTicket__card"]}>
+            <div className={Styles["showTicket__card--top"]}>
+              Friday May 27 2022
+            </div>
+            <div className={Styles["showTicket__card--body"]}>
+              <div className={Styles["showTicket__card--body"]}>
+                <aside>
+                  <h1>{show?.title}</h1>
+                  <p>
+                    <span>$10,000</span> <span>+ $+450</span>
+                  </p>
+                  <p>TICKET ADMITS ONE</p>
+                </aside>
+                <aside>
+                  <label>Choose Ticket Number</label>
+                  <select name="" id="">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className={Styles["showSummary"]}>
+          <h3>Summary</h3>
+          <div className={Styles["showSummary__card"]}>
+            <div className={Styles["showSummary__card--top"]}>
+              {Truncate(show?.title, 100)}
+            </div>
+            <ul className={Styles["showSummary__card--body"]}>
+              <li>
+                <p className={Styles.title}>{show?.title}</p>
+                <p>$10,000</p>
+              </li>
+              <li>
+                <section>
+                  <p>Fees</p>
+                  <p>$450</p>
+                </section>
+                <section>
+                  <p>Subtotal</p>
+                  <p>$10,450</p>
+                </section>
+              </li>
+            </ul>
+            <footer className={Styles["showSummary__card--footer"]}>
+              <div>
+                <h3>Total</h3>
+                <h3>$10,450</h3>
+              </div>
+              <Button
+                label="Continue to Checkout"
+                type="button"
+                handleClick={() => true}
+                loader={false}
+              >
+                {" "}
+                Continue to Checkout{" "}
+              </Button>
+            </footer>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }

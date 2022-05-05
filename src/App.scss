@@ -1,3 +1,8 @@
 @import "../src/styles/mixins";
 @import "../src/styles/global";
 @import "../src/styles/normalize";
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
