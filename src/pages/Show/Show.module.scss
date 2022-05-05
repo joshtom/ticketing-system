@@ -68,4 +68,19 @@
     width: 100%;
     height: auto;
   }
+  .notFound {
+    width: 100%;
+    min-height: 200px;
+    background-color: $primary-dark;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 3.5rem;
+
+    span {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
 }

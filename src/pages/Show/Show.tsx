@@ -40,11 +40,9 @@ function Show() {
           </section>
         </header>
       ) : (
-        <header className={Styles.header}>
+        <header className={Styles.notFound}>
           <h1> Show Not found </h1>
-          <span onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
-            Go Back
-          </span>
+          <span onClick={() => navigate("/")}>Go Back</span>
         </header>
       )}
       {/* <main className={Styles.main}>{`${show}`}</main> */}
