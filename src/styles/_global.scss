@@ -3,11 +3,13 @@
 
 // Variables
 $primary: rgb(2, 108, 223);
+$primary-dark: #095ecf;
 $white: #fff;
 $success: rgb(20, 128, 22);
 $danger: rgb(217, 58, 58);
-$loading: rgba(2, 108, 223, .6);
+$loading: rgba(2, 108, 223, 0.6);
 
 body {
   font-family: "Inter", sans-serif;
+  font-size: 16px;
 }

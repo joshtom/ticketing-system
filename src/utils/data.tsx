@@ -1,4 +1,4 @@
-interface UpcomingShows {
+export interface UpcomingShows {
   imageUrl: string;
   title: string;
   showNo: string;
