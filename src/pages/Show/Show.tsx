@@ -49,43 +49,42 @@ function Show() {
       )}
       <main className={Styles.main}>
         <section className={Styles["showTicket"]}>
-          <h3>Choose Your Tickets</h3>
+          <h3 className={Styles["showTicket--title"]}>Choose Your Tickets</h3>
           <div className={Styles["showTicket__card"]}>
             <div className={Styles["showTicket__card--top"]}>
               Friday May 27 2022
             </div>
             <div className={Styles["showTicket__card--body"]}>
-              <div className={Styles["showTicket__card--body"]}>
-                <aside>
-                  <h1>{show?.title}</h1>
-                  <p>
-                    <span>$10,000</span> <span>+ $+450</span>
-                  </p>
-                  <p>TICKET ADMITS ONE</p>
-                </aside>
-                <aside>
-                  <label>Choose Ticket Number</label>
-                  <select name="" id="">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-                </aside>
-              </div>
+              <aside className={Styles["leftAside"]}>
+                <h1>{show?.title}</h1>
+                <p className={Styles["total"]}>
+                  <span>$10,000</span> <span>+ $450</span>
+                </p>
+                <p className={Styles["admission"]}>TICKET ADMITS ONE</p>
+              </aside>
+              <aside className={Styles["rightAside"]}>
+                <label>Choose Ticket Number</label>
+                <select name="" id="">
+                  <option value="#">Select Ticket</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </aside>
             </div>
           </div>
         </section>
         <section className={Styles["showSummary"]}>
-          <h3>Summary</h3>
+          <h3 className={Styles["showSummary--title"]}>Summary</h3>
           <div className={Styles["showSummary__card"]}>
             <div className={Styles["showSummary__card--top"]}>
               {Truncate(show?.title, 100)}
             </div>
             <ul className={Styles["showSummary__card--body"]}>
               <li>
-                <p className={Styles.title}>{show?.title}</p>
+                <p className={Styles.title}>1 x {show?.title}</p>
                 <p>$10,000</p>
               </li>
               <li>

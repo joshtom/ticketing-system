@@ -2,7 +2,6 @@
 @import "../../styles/mixins";
 .Show {
   width: 100%;
-  background-color: red;
   height: auto;
 
   .header {
@@ -64,9 +63,142 @@
     }
   }
   .main {
-    background-color: red;
     width: 100%;
     height: auto;
+    padding: 1rem 3.5rem;
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+
+    @include respond(phone) {
+      padding: 2rem 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .showTicket {
+      color: $secondary-2;
+      &--title {
+        font-size: 34px;
+        @include respond(phone) {
+          font-size: 2.5rem;
+        }
+      }
+      &__card {
+        border-radius: 4px;
+        overflow: hidden;
+        margin-top: 15px;
+        &--top {
+          padding: 1.4rem 1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-bottom: 1px solid $primary;
+          background-color: $primary-light;
+          color: $primary;
+          font-weight: 600;
+        }
+        &--body {
+          border: 1px solid #eee;
+          padding: 1rem;
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          gap: 10px;
+
+          aside.leftAside {
+            h1 {
+              text-transform: uppercase;
+              font-weight: 500;
+              color: $primary-dark;
+            }
+            p {
+              margin-top: 5px;
+              &.total {
+                span {
+                  color: $primary;
+                }
+              }
+              &.admission {
+                font-weight: 300;
+                font-size: 14px;
+              }
+            }
+          }
+          aside.rightAside {
+            display: flex;
+            flex-direction: column;
+
+            select {
+              border: 1px solid #eee;
+              padding: 5px;
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+    }
+    .showSummary {
+      &--title {
+        font-size: 34px;
+        @include respond(phone) {
+          font-size: 2.5rem;
+        }
+      }
+      &__card {
+        border-radius: 4px;
+        overflow: hidden;
+        margin-top: 15px;
+        border: 1px solid #eee;
+        &--top {
+          background-color: transparent;
+          padding: 1.4rem 1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-bottom: 1px solid $primary-light;
+          color: black;
+          font-weight: 300;
+          text-transform: capitalize;
+        }
+        &--body {
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+
+          li {
+            padding: 20px;
+            border-bottom: 1px solid $primary-light;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+
+            &:last-child {
+              flex-direction: column;
+            }
+
+            section {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              &:last-child {
+                margin-top: 10px;
+              }
+            }
+          }
+        }
+        &--footer {
+          display: flex;
+          flex-direction: column;
+          padding: 1rem;
+          div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+          }
+        }
+      }
+    }
   }
   .notFound {
     width: 100%;
