@@ -28,6 +28,7 @@
   }
   &:hover,
   &:focus-within {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    opacity: 0.7;
   }
 }

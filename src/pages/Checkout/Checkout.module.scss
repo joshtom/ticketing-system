@@ -2,34 +2,117 @@
 .Checkout {
   width: 100%;
   background: transparent;
-  height: 80vh;
 
   &__container {
     width: 100%;
+    max-width: 1036px;
     height: auto;
     background-color: transparent;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 30px;
-    margin-top: 2rem;
-    padding: 1rem 8rem;
+    margin: 46px auto 28px;
+    padding: 2rem;
     &--payment {
       width: 100%;
       height: 500px;
-      border: 1px solid $primary-light;
+      border-radius: 4px;
       display: flex;
       flex-direction: column;
 
       & .delivery {
         width: 100%;
-        height: 300px;
-        border: 1px solid $primary-light;
+        height: 170px;
+        border: 1px solid $secondary;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+      }
+
+      & .payment {
+        width: 100%;
+        height: 170px;
+        border: 1px solid $secondary;
+        border-radius: 4px;
+        margin-bottom: 1rem;
       }
     }
     &--total {
       width: 100%;
-      height: 500px;
-      border: 1px solid $primary-light;
+      height: auto;
+      border: 1px solid $secondary;
+      border-radius: 4px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &-header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        font-weight: 500;
+      }
+      &-main {
+        padding-left: 0;
+        margin-top: 1.4rem;
+        li {
+          aside {
+            font-weight: 500;
+          }
+          section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 4px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: $a-link-dark;
+          }
+          &:nth-child(2) {
+            section:last-child {
+              margin-top: -10px;
+            }
+          }
+        }
+      }
+      & .cancel-order {
+        text-decoration: none;
+        color: $a-link;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      &-form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        font-weight: 500;
+        font-size: 14px;
+
+        & label {
+          display: flex;
+          font-size: 13px;
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+          margin-top: 10px;
+          margin-bottom: 15px;
+          & p {
+            & a {
+              color: $a-link;
+              text-decoration: none;
+            }
+          }
+        }
+
+        & button {
+          background-color: $a-link;
+        }
+      }
+      & h6 {
+        font-size: 10px;
+        margin-top: 20px;
+        font-weight: 500;
+      }
     }
   }
 }

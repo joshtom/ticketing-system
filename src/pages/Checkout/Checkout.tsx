@@ -1,6 +1,10 @@
+import { useState } from "react";
+import Button from "../../components/Button/Button";
+import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Styles from "./Checkout.module.scss";
 function Checkout() {
+  const [showTotalCard, setShowTotalCard] = useState<Boolean>(false);
   return (
     <div className={Styles["Checkout"]}>
       <Header title="Checkout." />
@@ -10,7 +14,57 @@ function Checkout() {
           <div className={Styles["payment"]}></div>
         </section>
         <section className={Styles["Checkout__container--total"]}>
-          <h1>Total Card</h1>
+          <header className={Styles["Checkout__container--total-header"]}>
+            <p>Total</p>
+            <p>$564.30</p>
+          </header>
+          <ul className={Styles["Checkout__container--total-main"]}>
+            <li>
+              <aside>Tickets</aside>
+              <section>
+                <p>Tickets: $257.00 x 2</p>
+                <p>$514.00</p>
+              </section>
+            </li>
+            <li>
+              <aside>Fees</aside>
+              <section>
+                <p>Service Fee: $46.25 x 2</p>
+                <p>$92.50</p>
+              </section>
+              <section>
+                <p>Order Processing Fee</p>
+                <p>$5.00</p>
+              </section>
+            </li>
+            <li>
+              <aside>Delivery</aside>
+              <section>
+                <p>Go Mobile</p>
+                <p>Free</p>
+              </section>
+            </li>
+          </ul>
+
+          <Link to="#" onClick={() => true} className={Styles["cancel-order"]}>
+            {" "}
+            Cancel Order{" "}
+          </Link>
+          <form className={Styles["Checkout__container--total-form"]}>
+            *All Sales Final - No Refunds
+            <label>
+              <input type="checkbox" />
+              <p>
+                I have read and agree to the current{" "}
+                <Link to="/#"> Terms of Use </Link>.
+              </p>
+            </label>
+            <Button type="submit" label="place-order" handleClick={() => true}>
+              {" "}
+              Place Order{" "}
+            </Button>
+          </form>
+          <h6>*Exceptions may apply, see our Terms of Use.</h6>
         </section>
       </div>
     </div>
