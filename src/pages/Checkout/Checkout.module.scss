@@ -22,10 +22,35 @@
 
       & .delivery {
         width: 100%;
-        height: 170px;
+        height: auto;
         border: 1px solid $secondary;
         border-radius: 4px;
         margin-bottom: 1rem;
+        padding: 20px;
+
+        &--title {
+          font-size: 20px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          & svg {
+            width: 20px;
+          }
+        }
+        &--subtitle {
+          font-weight: 500;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          line-height: 1.25;
+        }
+        &--article {
+          line-height: 18px;
+          font-size: 14px;
+          text-align: justify;
+          color: $a-link-dark;
+        }
       }
 
       & .payment {

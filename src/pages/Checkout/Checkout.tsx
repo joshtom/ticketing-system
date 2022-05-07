@@ -3,6 +3,7 @@ import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Styles from "./Checkout.module.scss";
+import Icon from "../../components/Icon";
 function Checkout() {
   const [showTotalCard, setShowTotalCard] = useState<Boolean>(false);
   return (
@@ -10,7 +11,17 @@ function Checkout() {
       <Header title="Checkout." />
       <div className={Styles["Checkout__container"]}>
         <section className={Styles["Checkout__container--payment"]}>
-          <div className={Styles["delivery"]}></div>
+          <div className={Styles["delivery"]}>
+            <h2 className={Styles["delivery--title"]}>
+              Delivery <Icon iconName="successCheck" />
+            </h2>
+            <p className={Styles["delivery--subtitle"]}>Go Mobile - Free</p>
+            <p className={Styles["delivery--article"]}>
+              Your phone's your ticket. Locate your tickets in your account - or
+              in your app. When you go mobile, your tickets will not be emailed
+              to you or available for print.
+            </p>
+          </div>
           <div className={Styles["payment"]}></div>
         </section>
         <section className={Styles["Checkout__container--total"]}>
