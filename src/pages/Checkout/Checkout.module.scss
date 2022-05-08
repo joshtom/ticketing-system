@@ -1,4 +1,5 @@
 @import "../../styles/global";
+@import "../../styles/mixins";
 .Checkout {
   width: 100%;
   background: transparent;
@@ -13,9 +14,13 @@
     gap: 30px;
     margin: 46px auto 28px;
     padding: 2rem;
+
+    @include respond(phone) {
+      grid-template-columns: 1fr;
+    }
     &--payment {
       width: 100%;
-      height: 500px;
+      height: auto;
       border-radius: 4px;
       display: flex;
       flex-direction: column;
@@ -55,10 +60,70 @@
 
       & .payment {
         width: 100%;
-        height: 170px;
+        height: auto;
         border: 1px solid $secondary;
         border-radius: 4px;
         margin-bottom: 1rem;
+        padding: 20px;
+
+        &--title {
+          font-weight: 500;
+          margin-bottom: 20px;
+        }
+        &--addCard {
+          display: flex;
+          flex-direction: column;
+          border-bottom: 1px solid $primary-light;
+          padding-bottom: 20px;
+
+          & h3 {
+            font-weight: 500;
+            font-size: 15px;
+            margin-bottom: 30px;
+          }
+
+          &__wrapper {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            span {
+              &:first-child {
+                svg {
+                  fill: $a-link;
+                }
+              }
+              &:nth-child(2) {
+                margin: 0 10px;
+              }
+            }
+            p {
+              color: $a-link;
+              font-weight: 500;
+            }
+          }
+        }
+        &--payPal {
+          padding: 0px 20px;
+          margin-top: 20px;
+          &__title {
+            font-weight: 500;
+          }
+          & article {
+            margin-top: 10px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            a {
+              color: $a-link;
+              text-decoration: none;
+              font-weight: 600;
+            }
+          }
+          & span {
+            svg {
+              width: 100px;
+            }
+          }
+        }
       }
     }
     &--total {

@@ -22,7 +22,34 @@ function Checkout() {
               to you or available for print.
             </p>
           </div>
-          <div className={Styles["payment"]}></div>
+          <div className={Styles["payment"]}>
+            <h3 className={Styles["payment--title"]}>Payment</h3>
+            <section className={Styles["payment--addCard"]}>
+              <h3>Use Credit / Debit Card</h3>
+              <section className={Styles["payment--addCard__wrapper"]}>
+                <span>
+                  {" "}
+                  <Icon iconName="plusIcon" />{" "}
+                </span>
+                <span>
+                  {" "}
+                  <Icon iconName="cardIcon" />{" "}
+                </span>
+                <p>Add New Card</p>
+              </section>
+            </section>
+            <section className={Styles["payment--payPal"]}>
+              <p className={Styles["payment--payPal__title"]}>Or Pay With</p>
+              <article>
+                By using a digital wallet and continuing past this page, you
+                have read and are accepting the{" "}
+                <Link to="/#">Terms of Use</Link>
+              </article>
+              <span>
+                <Icon iconName="payPal" />
+              </span>
+            </section>
+          </div>
         </section>
         <section className={Styles["Checkout__container--total"]}>
           <header className={Styles["Checkout__container--total-header"]}>
