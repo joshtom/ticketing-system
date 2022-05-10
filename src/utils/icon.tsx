@@ -4,8 +4,11 @@ import { ReactComponent as MasterCard } from "../assets/icons/master-card.svg";
 import { ReactComponent as Visa } from "../assets/icons/visa.svg";
 import { ReactComponent as SuccessCheck } from "../assets/icons/successCheck.svg";
 import { ReactComponent as CardIcon } from "../assets/icons/cardIcon.svg";
+import { ReactComponent as BackCardIcon } from "../assets/icons/backCardIcon.svg";
 import { ReactComponent as PlusIcon } from "../assets/icons/plusIcon.svg";
 import { ReactComponent as Paypal } from "../assets/icons/payPal.svg";
+import { ReactComponent as DinersClub } from "../assets/icons/diners-club.svg";
+import { ReactComponent as Citi } from "../assets/icons/citi.svg";
 import { IconType } from "./types";
 
 export const icons: Record<IconType, JSX.Element> = {
@@ -17,4 +20,7 @@ export const icons: Record<IconType, JSX.Element> = {
   cardIcon: <CardIcon />,
   plusIcon: <PlusIcon />,
   payPal: <Paypal />,
+  dinersClub: <DinersClub />,
+  citi: <Citi />,
+  backCardIcon: <BackCardIcon />,
 };

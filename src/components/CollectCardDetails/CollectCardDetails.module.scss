@@ -1,0 +1,98 @@
+@import "../../styles/mixins";
+@import "../../styles/global";
+.CollectCardDetails {
+  background-color: transparent;
+  &--acceptedCards {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    gap: 10px;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+
+    @include respond(phone) {
+      width: 100%;
+    }
+
+    svg {
+      width: 32px;
+      height: 24px;
+    }
+  }
+
+  &__form {
+    &--input {
+      margin-bottom: 1rem;
+    }
+    &--row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      gap: 20px;
+      & > * {
+        flex: 1 1 auto;
+      }
+
+      &-expirationDate {
+        display: flex;
+        flex-direction: column;
+        // background-color: red;
+        height: 80px;
+
+        label {
+          margin-bottom: 5px;
+          font-weight: 400;
+          color: $a-link-dark;
+          font-size: 14px;
+        }
+
+        input {
+          padding: 10px;
+          border: 1px solid #999;
+          border-radius: 4px;
+          position: relative;
+          width: 100%;
+
+          &:focus,
+          &:focus-visible {
+            outline: none;
+          }
+        }
+
+        & .errors {
+          color: $danger;
+          font-size: 11px;
+          margin-top: 2px;
+        }
+      }
+    }
+    &--select {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      width: 100%;
+
+      label {
+        color: $a-link-dark;
+        margin-bottom: 5px;
+        font-weight: 400;
+        font-size: 14px;
+      }
+      select {
+        padding: 10px;
+        border: 1px solid #999;
+        border-radius: 4px;
+        color: $a-link-dark;
+        width: 100%;
+
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+    &--button {
+      margin-top: 50px;
+    }
+  }
+}

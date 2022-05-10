@@ -4,8 +4,13 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Styles from "./Checkout.module.scss";
 import Icon from "../../components/Icon";
+import CollectCardDetails from "../../components/CollectCardDetails/CollectCardDetails";
 function Checkout() {
-  const [showTotalCard, setShowTotalCard] = useState<Boolean>(false);
+  const [showInput, setShowInput] = useState<Boolean>(false);
+  const handleCancelOrder = () => {
+    // Cancel Order code here - >
+    // Clear localstorage and navigate to the index page
+  };
   return (
     <div className={Styles["Checkout"]}>
       <Header title="Checkout." />
@@ -24,31 +29,50 @@ function Checkout() {
           </div>
           <div className={Styles["payment"]}>
             <h3 className={Styles["payment--title"]}>Payment</h3>
-            <section className={Styles["payment--addCard"]}>
-              <h3>Use Credit / Debit Card</h3>
-              <section className={Styles["payment--addCard__wrapper"]}>
-                <span>
-                  {" "}
-                  <Icon iconName="plusIcon" />{" "}
-                </span>
-                <span>
-                  {" "}
-                  <Icon iconName="cardIcon" />{" "}
-                </span>
-                <p>Add New Card</p>
-              </section>
-            </section>
-            <section className={Styles["payment--payPal"]}>
-              <p className={Styles["payment--payPal__title"]}>Or Pay With</p>
-              <article>
-                By using a digital wallet and continuing past this page, you
-                have read and are accepting the{" "}
-                <Link to="/#">Terms of Use</Link>
-              </article>
-              <span>
-                <Icon iconName="payPal" />
-              </span>
-            </section>
+            {showInput && (
+              <p
+                className={Styles["payment--storedTitle"]}
+                onClick={() => setShowInput(!showInput)}
+              >
+                Back to Stored Cards
+              </p>
+            )}
+            {!showInput ? (
+              <div>
+                <section
+                  className={Styles["payment--addCard"]}
+                  onClick={() => setShowInput(!showInput)}
+                >
+                  <h3>Use Credit / Debit Card</h3>
+                  <section className={Styles["payment--addCard__wrapper"]}>
+                    <span>
+                      {" "}
+                      <Icon iconName="plusIcon" />{" "}
+                    </span>
+                    <span>
+                      {" "}
+                      <Icon iconName="cardIcon" />{" "}
+                    </span>
+                    <p style={{ display: "inline-block" }}>Add New Card</p>
+                  </section>
+                </section>
+                <section className={Styles["payment--payPal"]}>
+                  <p className={Styles["payment--payPal__title"]}>
+                    Or Pay With
+                  </p>
+                  <article>
+                    By using a digital wallet and continuing past this page, you
+                    have read and are accepting the{" "}
+                    <Link to="/#">Terms of Use</Link>
+                  </article>
+                  <span>
+                    <Icon iconName="payPal" />
+                  </span>
+                </section>
+              </div>
+            ) : (
+              <CollectCardDetails />
+            )}
           </div>
         </section>
         <section className={Styles["Checkout__container--total"]}>
@@ -84,7 +108,11 @@ function Checkout() {
             </li>
           </ul>
 
-          <Link to="#" onClick={() => true} className={Styles["cancel-order"]}>
+          <Link
+            to="#"
+            onClick={() => handleCancelOrder}
+            className={Styles["cancel-order"]}
+          >
             {" "}
             Cancel Order{" "}
           </Link>

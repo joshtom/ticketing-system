@@ -1,0 +1,61 @@
+@import "../../styles/global";
+.input {
+  display: flex;
+  flex-direction: column;
+  // background-color: red;
+  height: 80px;
+
+  label {
+    margin-bottom: 5px;
+    font-weight: 400;
+    color: $a-link-dark;
+    font-size: 14px;
+
+    &.labelError {
+      color: red;
+    }
+  }
+  &__wrapper {
+    border: 1px solid #999;
+    box-shadow: rgb(0 0 0 / 8%) 0px 2px 2px 0px inset;
+    position: relative;
+    display: flex;
+    border-radius: 4px;
+    align-items: center;
+    // gap: 20px;
+
+    &.error {
+      border: 1px solid $danger;
+    }
+    &--icon {
+      position: relative;
+      padding-left: 10px;
+      margin-right: -3px;
+      z-index: 1;
+      svg {
+        width: 32px;
+        height: 24px;
+      }
+    }
+    input {
+      padding: 10px;
+      border: 1px solid #999;
+      border: none;
+      border-radius: 4px;
+      position: relative;
+      width: 100%;
+
+      &:focus,
+      &:focus-visible {
+        border: 1px solid $success;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+  &__errors {
+    color: $danger;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+}

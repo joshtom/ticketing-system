@@ -1,4 +1,10 @@
-export type CardType = "american-express" | "visa" | "master-card" | "discover";
+export type CardType =
+  | "american-express"
+  | "visa"
+  | "master-card"
+  | "discover"
+  | "diners-club"
+  | "citi";
 export type upcomingDataType = "imageUrl" | "title" | "";
 export type IconType =
   | "discover"
@@ -8,4 +14,7 @@ export type IconType =
   | "successCheck"
   | "cardIcon"
   | "plusIcon"
-  | "payPal";
+  | "payPal"
+  | "dinersClub"
+  | "citi"
+  | "backCardIcon";
