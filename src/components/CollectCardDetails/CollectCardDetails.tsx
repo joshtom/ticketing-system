@@ -4,11 +4,15 @@ import { Formik, Form, FormikProps, Field } from "formik";
 import * as Yup from "yup";
 import Input from "../Input/Input";
 import Icon from "../Icon";
-import { IconType } from "../../utils/types";
 import { formatString, creditCardType } from "../../helpers";
 import Button from "../Button/Button";
 import { countryCode } from "../../utils/countryCodes";
+import { useStickyState } from "../../hooks";
 
+interface CardDetailsProps {
+  setShowInput: React.Dispatch<React.SetStateAction<Boolean>>;
+  setCardDetails: React.Dispatch<React.SetStateAction<Object>>;
+}
 interface Values {
   fullname: string;
   cardnumber: string;
@@ -35,7 +39,7 @@ const CardDetailsFormSchema = Yup.object().shape({
   cardnumber: Yup.string()
     .matches(/^[0-9]*$/, "Only Digits is allowed")
     .max(16, "Must not be greater than 16 characters")
-    .min(16, "Must not be less than 16 characters")
+    // .min(16, "Must not be less than 16 characters")
     .required("*Required"),
   securitycode: Yup.string()
     .max(3, "Must not be greater than 3 characters")
@@ -57,7 +61,11 @@ const CardDetailsFormSchema = Yup.object().shape({
     .required("*Required"),
 });
 
-function CollectCardDetails() {
+const CollectCardDetails: React.FC<CardDetailsProps> = ({
+  setShowInput,
+  setCardDetails,
+}) => {
+  const [value, setValue] = useStickyState({}, "cardDetails");
   return (
     <div className={Styles["CollectCardDetails"]}>
       <header className={Styles["CollectCardDetails--acceptedCards"]}>
@@ -83,8 +91,17 @@ function CollectCardDetails() {
         }}
         validationSchema={CardDetailsFormSchema}
         onSubmit={(values, action) => {
-          console.log("The values", values);
-          console.log("The action", action);
+          // console.log("The values", values);
+          // console.log("The action", action);
+          setValue({
+            cardDetails: values,
+          });
+          setCardDetails(values);
+
+          setTimeout(() => {
+            setShowInput(false);
+            action.resetForm();
+          }, 2000);
         }}
       >
         {(props: FormikProps<Values>) => {
@@ -232,6 +249,6 @@ function CollectCardDetails() {
       </Formik>
     </div>
   );
-}
+};
 
 export default CollectCardDetails;

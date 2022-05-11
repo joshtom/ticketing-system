@@ -1,16 +1,63 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../../components/Button/Button";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Styles from "./Checkout.module.scss";
 import Icon from "../../components/Icon";
 import CollectCardDetails from "../../components/CollectCardDetails/CollectCardDetails";
+import { useStickyState } from "../../hooks";
+import { creditCardType, numberWithCommas } from "../../helpers";
 function Checkout() {
   const [showInput, setShowInput] = useState<Boolean>(false);
+  const [readChange, setreadChange] = useState(false);
+  const [creditCardDetails] = useStickyState({}, "cardDetails");
+  const [cardDetails, setCardDetails] = useState(creditCardDetails);
+  const [totalValue] = useStickyState({}, "ticketPrice");
+  const navigate = useNavigate();
   const handleCancelOrder = () => {
-    // Cancel Order code here - >
-    // Clear localstorage and navigate to the index page
+    window.localStorage.removeItem("ticketPrice");
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
   };
+
+  /** What's going on here -> LINE 29 - 31
+   ** Because Items gotten from localstorage is set as default state for cardDetails
+   ** Localstorage isn't asynchronous, Reason why a new state is set.
+   ** However, The state is not persisted, So localstorage serves as a fallback (Because it already has the new state as well)
+   */
+
+  const { cardnumber, fullname, expirationdate } = cardDetails.cardDetails
+    ? cardDetails.cardDetails
+    : cardDetails;
+
+  const handleReadChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { checked } = e.currentTarget;
+    setreadChange(checked);
+  };
+
+  const handlePlaceOrder = () => {
+    // Check If not card is selected
+    // Check the checkbox is also not checked
+    try {
+      if (Object.keys(cardDetails).length === 0) {
+        alert("Kindly check and add your card detail");
+      } else if (!readChange) {
+        alert("Confirm if you have read and agreed to the terms and condition");
+      } else {
+        alert("Order Place Succcessfully");
+        handleCancelOrder();
+      }
+    } catch (e) {
+      console.log("An Unknown Error Occured", e);
+    }
+  };
+
+  // If the key in localstorage is empty, Redirect to homepage
+  if (Object.keys(totalValue).length === 0) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <div className={Styles["Checkout"]}>
       <Header title="Checkout." />
@@ -39,12 +86,30 @@ function Checkout() {
             )}
             {!showInput ? (
               <div>
-                <section
-                  className={Styles["payment--addCard"]}
-                  onClick={() => setShowInput(!showInput)}
-                >
+                <section className={Styles["payment--addCard"]}>
                   <h3>Use Credit / Debit Card</h3>
-                  <section className={Styles["payment--addCard__wrapper"]}>
+
+                  {Object.keys(cardDetails).length === 0 ? null : (
+                    <section className={Styles["payment--addCard__addedCard"]}>
+                      <header>
+                        <Icon iconName={creditCardType(cardnumber)} />
+                        <section>
+                          <p>
+                            {creditCardType(cardnumber)} -{" "}
+                            {cardnumber?.slice(-4)}{" "}
+                          </p>
+                          <p>
+                            {fullname} | exp. {expirationdate}
+                          </p>
+                        </section>
+                      </header>
+                    </section>
+                  )}
+
+                  <section
+                    className={Styles["payment--addCard__wrapper"]}
+                    onClick={() => setShowInput(!showInput)}
+                  >
                     <span>
                       {" "}
                       <Icon iconName="plusIcon" />{" "}
@@ -56,6 +121,8 @@ function Checkout() {
                     <p style={{ display: "inline-block" }}>Add New Card</p>
                   </section>
                 </section>
+
+                {/*  */}
                 <section className={Styles["payment--payPal"]}>
                   <p className={Styles["payment--payPal__title"]}>
                     Or Pay With
@@ -71,28 +138,31 @@ function Checkout() {
                 </section>
               </div>
             ) : (
-              <CollectCardDetails />
+              <CollectCardDetails
+                setShowInput={setShowInput}
+                setCardDetails={setCardDetails}
+              />
             )}
           </div>
         </section>
         <section className={Styles["Checkout__container--total"]}>
           <header className={Styles["Checkout__container--total-header"]}>
             <p>Total</p>
-            <p>$564.30</p>
+            <p>${numberWithCommas(Number(totalValue.total).toFixed(2))}</p>
           </header>
           <ul className={Styles["Checkout__container--total-main"]}>
             <li>
               <aside>Tickets</aside>
               <section>
-                <p>Tickets: $257.00 x 2</p>
-                <p>$514.00</p>
+                <p>Tickets: $450.00 x {totalValue?.ticketValue}</p>
+                <p>${numberWithCommas(Number(totalValue.fees).toFixed(2))}</p>
               </section>
             </li>
             <li>
               <aside>Fees</aside>
               <section>
-                <p>Service Fee: $46.25 x 2</p>
-                <p>$92.50</p>
+                <p>Service Fee: $46.25 x {totalValue?.ticketValue}</p>
+                <p>${46.25 * totalValue?.ticketValue}</p>
               </section>
               <section>
                 <p>Order Processing Fee</p>
@@ -108,24 +178,23 @@ function Checkout() {
             </li>
           </ul>
 
-          <Link
-            to="#"
-            onClick={() => handleCancelOrder}
-            className={Styles["cancel-order"]}
-          >
+          <p onClick={handleCancelOrder} className={Styles["cancel-order"]}>
             {" "}
             Cancel Order{" "}
-          </Link>
-          <form className={Styles["Checkout__container--total-form"]}>
+          </p>
+          <form
+            onSubmit={handlePlaceOrder}
+            className={Styles["Checkout__container--total-form"]}
+          >
             *All Sales Final - No Refunds
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" onChange={handleReadChange} />
               <p>
                 I have read and agree to the current{" "}
                 <Link to="/#"> Terms of Use </Link>.
               </p>
             </label>
-            <Button type="submit" label="place-order" handleClick={() => true}>
+            <Button type="submit" label="place-order">
               {" "}
               Place Order{" "}
             </Button>

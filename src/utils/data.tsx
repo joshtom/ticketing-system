@@ -3,13 +3,9 @@ export interface UpcomingShows {
   title: string;
   showNo: string;
   showId: number;
+  ticketPrice: string;
 }
 
-interface UpcomingTicket {
-  title: string;
-  date: string;
-  subtitle: string;
-}
 const upcomingShowsData: Array<UpcomingShows> = [
   {
     imageUrl:
@@ -17,6 +13,7 @@ const upcomingShowsData: Array<UpcomingShows> = [
     title: "Men's Final / Women's Doubles Final",
     showNo: "..",
     showId: 1,
+    ticketPrice: "456",
   },
   {
     imageUrl:
@@ -24,6 +21,7 @@ const upcomingShowsData: Array<UpcomingShows> = [
     title: "1st Round Men's / Women's",
     showNo: "..",
     showId: 2,
+    ticketPrice: "200",
   },
   {
     imageUrl:
@@ -31,12 +29,14 @@ const upcomingShowsData: Array<UpcomingShows> = [
     title: "Harry Styles: One Night Only in New York",
     showNo: "..",
     showId: 3,
+    ticketPrice: "800",
   },
   {
     imageUrl: "https://junkee.com/wp-content/uploads/2020/01/anticipatedtv.jpg",
     title: "Stars on Ice",
     showNo: "..",
     showId: 4,
+    ticketPrice: "100",
   },
   {
     imageUrl:
@@ -44,6 +44,7 @@ const upcomingShowsData: Array<UpcomingShows> = [
     title: "PBR: Team Series",
     showNo: "..",
     showId: 5,
+    ticketPrice: "390",
   },
   {
     imageUrl:
@@ -51,6 +52,7 @@ const upcomingShowsData: Array<UpcomingShows> = [
     title: "Scott Hamilton and Friend on Ice",
     showNo: "..",
     showId: 6,
+    ticketPrice: "150",
   },
   {
     imageUrl:
@@ -58,6 +60,7 @@ const upcomingShowsData: Array<UpcomingShows> = [
     title: "Ed Sheeran Live",
     showNo: "..",
     showId: 7,
+    ticketPrice: "250",
   },
   {
     imageUrl:
@@ -65,98 +68,8 @@ const upcomingShowsData: Array<UpcomingShows> = [
     title: "Jurassic World Live Tour",
     showNo: "..",
     showId: 8,
+    ticketPrice: "300",
   },
 ];
 
-const upcomingTicketData: Array<UpcomingTicket[]> = [
-  [
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-  ],
-  [
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-  ],
-  [
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-  ],
-  [
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-  ],
-  [
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-  ],
-  [
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-  ],
-  [
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-  ],
-  [
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-    { title: "..", date: "JUN 16", subtitle: "...." },
-  ],
-];
-
-export { upcomingShowsData, upcomingTicketData };
+export { upcomingShowsData };

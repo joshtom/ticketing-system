@@ -86,7 +86,29 @@
           & h3 {
             font-weight: 500;
             font-size: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+          }
+          &__addedCard {
+            header {
+              background-color: #33ccff1a;
+              border: 1px solid #33ccff;
+              margin-bottom: 20px;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              padding: 10px 20px;
+              border-radius: 4px;
+
+              section {
+                p {
+                  color: $a-link-dark;
+                  &:first-child {
+                    font-size: 14px;
+                    margin-bottom: 3px;
+                  }
+                }
+              }
+            }
           }
 
           &__wrapper {
@@ -179,6 +201,7 @@
         color: $a-link;
         font-size: 14px;
         font-weight: 500;
+        cursor: pointer;
       }
       &-form {
         display: flex;

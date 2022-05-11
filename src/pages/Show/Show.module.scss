@@ -105,6 +105,10 @@
           grid-template-columns: 2fr 1fr;
           gap: 10px;
 
+          @include respond(phone) {
+            grid-template-columns: 1fr;
+          }
+
           aside.leftAside {
             h1 {
               text-transform: uppercase;
@@ -132,6 +136,19 @@
               border: 1px solid #eee;
               padding: 5px;
               margin-top: 10px;
+              width: 100%;
+              border-radius: 4px;
+
+              &:active,
+              &:focus,
+              &:focus-visible,
+              &:focus-within {
+                outline: none;
+              }
+            }
+
+            @include respond(phone) {
+              margin-top: 20px;
             }
           }
         }

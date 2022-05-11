@@ -1,6 +1,6 @@
 {
   "short_name": "Ticker Master",
-  "name": "Ticker Master",
+  "name": "Ticker Master Sample",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,12 +10,12 @@
     {
       "src": "favicon.ico",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "64x64 32x32 24x24 16x16"
     },
     {
       "src": "favicon.ico",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "64x64 32x32 24x24 16x16"
     }
   ],
   "start_url": ".",

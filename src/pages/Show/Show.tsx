@@ -3,18 +3,47 @@ import Header from "../../components/Header/Header";
 import { useParams, useNavigate } from "react-router-dom";
 import Styles from "./Show.module.scss";
 import { upcomingShowsData, UpcomingShows } from "../../utils/data";
-import { Truncate } from "../../helpers";
+import { numberWithCommas, Truncate } from "../../helpers";
 import Button from "../../components/Button/Button";
+import { useStickyState } from "../../hooks";
 
 function Show() {
   let { id } = useParams();
   const navigate = useNavigate();
+  const [, setValue] = useStickyState({}, "ticketPrice");
+  const [loading, setLoading] = useState(false);
   const [show, setShow] = useState<UpcomingShows>({
     imageUrl: "",
     showId: 0,
     showNo: "",
     title: "",
+    ticketPrice: "",
   });
+  const [ticketValue, setTicketValue] = useState(1);
+  let [fees, setFees] = useState<number>(450);
+
+  const handleTicketChange = (e: React.ChangeEvent<any>) => {
+    setTicketValue(e.target.value);
+    if (e.target.value == 1) setFees(450);
+    else if (e.target.value == 2) setFees(900);
+    else if (e.target.value == 3) setFees(1350);
+    else if (e.target.value == 4) setFees(1800);
+    else if (e.target.value == 5) setFees(2250);
+  };
+
+  const handleCheckout = () => {
+    // Set data to localstorage.
+    setLoading(true);
+    setValue({
+      total: parseFloat(show.ticketPrice) + fees,
+      fees: fees,
+      ticketValue: ticketValue,
+    });
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/checkout");
+    }, 3000);
+  };
 
   useEffect(() => {
     upcomingShowsData.forEach((data) => {
@@ -59,20 +88,26 @@ function Show() {
                 <aside className={Styles["leftAside"]}>
                   <h1>{show?.title}</h1>
                   <p className={Styles["total"]}>
-                    <span>$10,000</span> <span>+ $450</span>
+                    <span>${numberWithCommas(show?.ticketPrice)}</span>{" "}
+                    <span>+ ${fees}</span>
                   </p>
                   <p className={Styles["admission"]}>TICKET ADMITS ONE</p>
                 </aside>
                 <aside className={Styles["rightAside"]}>
-                  <label>Choose Ticket Number</label>
-                  <select name="" id="">
-                    <option value="#">Select Ticket</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
+                  <form>
+                    <label>Choose Ticket Number</label>
+                    <select
+                      name="ticketChange"
+                      id=""
+                      onChange={handleTicketChange}
+                    >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </form>
                 </aside>
               </div>
             </div>
@@ -85,30 +120,42 @@ function Show() {
               </div>
               <ul className={Styles["showSummary__card--body"]}>
                 <li>
-                  <p className={Styles.title}>1 x {show?.title}</p>
-                  <p>$10,000</p>
+                  <p className={Styles.title}>
+                    {ticketValue} x {show?.title}
+                  </p>
+                  <p>${numberWithCommas(show.ticketPrice)}</p>
                 </li>
                 <li>
                   <section>
                     <p>Fees</p>
-                    <p>$450</p>
+                    <p>${fees}</p>
                   </section>
                   <section>
                     <p>Subtotal</p>
-                    <p>$10,450</p>
+                    <p>
+                      $
+                      {numberWithCommas(
+                        Number(parseFloat(show.ticketPrice) + fees)
+                      )}
+                    </p>
                   </section>
                 </li>
               </ul>
               <footer className={Styles["showSummary__card--footer"]}>
                 <div>
                   <h3>Total</h3>
-                  <h3>$10,450</h3>
+                  <h3>
+                    $
+                    {numberWithCommas(
+                      Number(parseFloat(show.ticketPrice) + fees)
+                    )}
+                  </h3>
                 </div>
                 <Button
                   label="Continue to Checkout"
                   type="button"
-                  handleClick={() => true}
-                  loader={false}
+                  handleClick={handleCheckout}
+                  loader={loading}
                 >
                   {" "}
                   Continue to Checkout{" "}
