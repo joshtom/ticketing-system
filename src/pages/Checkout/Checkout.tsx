@@ -45,7 +45,7 @@ function Checkout() {
       } else if (!readChange) {
         alert("Confirm if you have read and agreed to the terms and condition");
       } else {
-        alert("Order Place Succcessfully");
+        alert("Order Placed Succcessfully");
         handleCancelOrder();
       }
     } catch (e) {

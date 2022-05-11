@@ -99,6 +99,11 @@
               padding: 10px 20px;
               border-radius: 4px;
 
+              svg {
+                width: 32px;
+                height: 24px;
+              }
+
               section {
                 p {
                   color: $a-link-dark;
