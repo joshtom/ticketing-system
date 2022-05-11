@@ -1,5 +1,4 @@
 export const formatString = (event: any) => {
-  var inputChar = String.fromCharCode(event.keyCode);
   var code = event.keyCode;
   var allowedKeys = [8];
   if (allowedKeys.indexOf(code) !== -1) {
@@ -8,7 +7,7 @@ export const formatString = (event: any) => {
 
   event.target.value = event.target.value
     .replace(
-      /^([1-9]\/|[2-9])$/g,
+      /^([1-9]|[2-9])$/g,
       "0$1/" // 3 > 03/
     )
     .replace(
@@ -24,7 +23,7 @@ export const formatString = (event: any) => {
       "$1/$2" // 141 > 01/41
     )
     .replace(
-      /^([0]+)\/|[0]+$/g,
+      /^([0]+)|[0]+$/g,
       "0" // 0/ > 0 and 00 > 0
     )
     .replace(

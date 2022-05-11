@@ -14,14 +14,14 @@ interface InputProps {
 }
 
 const Input: React.FC<InputProps> = ({ ...props }) => {
-  const [field, meta, helpers] = useField(props);
+  const [field, meta] = useField(props);
 
   const isError = Boolean(meta.error && meta.touched);
   const applyBorder = {
     border: "1px solid red",
   };
 
-  const [active, setActive] = useState(false);
+  const [, setActive] = useState(false);
 
   const inputType = props.type;
 

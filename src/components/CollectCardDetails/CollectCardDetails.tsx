@@ -1,4 +1,3 @@
-import { useState, useCallback, useEffect } from "react";
 import Styles from "./CollectCardDetails.module.scss";
 import { Formik, Form, FormikProps, Field } from "formik";
 import * as Yup from "yup";
@@ -65,7 +64,7 @@ const CollectCardDetails: React.FC<CardDetailsProps> = ({
   setShowInput,
   setCardDetails,
 }) => {
-  const [value, setValue] = useStickyState({}, "cardDetails");
+  const [, setValue] = useStickyState({}, "cardDetails");
   return (
     <div className={Styles["CollectCardDetails"]}>
       <header className={Styles["CollectCardDetails--acceptedCards"]}>

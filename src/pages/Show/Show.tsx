@@ -24,11 +24,11 @@ function Show() {
 
   const handleTicketChange = (e: React.ChangeEvent<any>) => {
     setTicketValue(e.target.value);
-    if (e.target.value == 1) setFees(450);
-    else if (e.target.value == 2) setFees(900);
-    else if (e.target.value == 3) setFees(1350);
-    else if (e.target.value == 4) setFees(1800);
-    else if (e.target.value == 5) setFees(2250);
+    if (Number(e.target.value) === 1) setFees(450);
+    else if (Number(e.target.value) === 2) setFees(900);
+    else if (Number(e.target.value) === 3) setFees(1350);
+    else if (Number(e.target.value) === 4) setFees(1800);
+    else if (Number(e.target.value) === 5) setFees(2250);
   };
 
   const handleCheckout = () => {
@@ -135,7 +135,7 @@ function Show() {
                     <p>
                       $
                       {numberWithCommas(
-                        Number(parseFloat(show.ticketPrice) + fees)
+                        Number(parseInt(show.ticketPrice) + fees)
                       )}
                     </p>
                   </section>
@@ -147,7 +147,7 @@ function Show() {
                   <h3>
                     $
                     {numberWithCommas(
-                      Number(parseFloat(show.ticketPrice) + fees)
+                      Number(parseInt(show.ticketPrice) + fees)
                     )}
                   </h3>
                 </div>

@@ -1,6 +1,6 @@
 import { icons } from "../../utils/icon";
 import "./icon.module.scss";
-import { CardType, IconType } from "../../utils/types";
+import { IconType } from "../../utils/types";
 
 interface IconProps {
   iconName: IconType;
